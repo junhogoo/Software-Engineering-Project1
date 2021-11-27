@@ -12,6 +12,7 @@
         <activity android:name=".Community_Activity"/>
         <activity android:name=".Home_Activity"/>
         <activity android:name=".Ranking_Activity"/>
+        <activity android:name=".ChampInfo_Activity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">

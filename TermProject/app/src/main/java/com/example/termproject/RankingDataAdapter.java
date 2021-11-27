@@ -117,7 +117,7 @@ public class RankingDataAdapter implements Serializable {
     */
     public void update(Ranking_Item item){
         if(mDb != null) {
-            String sql = "update Community_info set rank=\""+item.getrName()+"\",name=\""+item.getrLp()+"\", lp=\""+item.getrName();
+            String sql = "update Ranking_info set rName=\""+item.getrName()+"\", lp=\""+item.getrLp()+"\" where ranking="+item.getrNum();
             mDb.execSQL(sql);
         }
     }

@@ -45,17 +45,17 @@ public class Home_Activity extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
-//        champInfo_btn=(Button)findViewById(R.id.home_champinfo_btn);
-//        champInfo_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                intent.setClass(getApplicationContext(),Ex_activitiy.class);
-//                intent.putExtra("id",id);
-//                intent.putExtra("type", 2);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                startActivity(intent);
-//            }
-//        });
+        champInfo_btn=(Button)findViewById(R.id.home_champinfo_btn);
+        champInfo_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent.setClass(getApplicationContext(),ChampInfo_Activity.class);
+                intent.putExtra("id",id);
+                intent.putExtra("type", 2);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
         ranking_btn=(Button)findViewById(R.id.home_ranking_btn);
         ranking_btn.setOnClickListener(new View.OnClickListener() {
             @Override

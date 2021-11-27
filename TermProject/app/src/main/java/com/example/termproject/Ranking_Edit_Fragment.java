@@ -11,29 +11,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
 import java.io.IOException;
 
 public class Ranking_Edit_Fragment extends Fragment {
-    ViewGroup rootView;
+    ViewGroup rootView, exView;
     Ranking_Activity activity;
     Ranking_Fragment rankingFragment;
     TextView title;
-    Spinner tierSpinner;
     EditText editName;
-    ImageView editImg;
     EditText editLP;
     Button AddCompleteButton;
     Button AddCancelButton;
     String name;
     int img_id;
     int lp;
-
+    Ranking_Item item;
+    RankingDataAdapter adapter;
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -44,33 +43,24 @@ public class Ranking_Edit_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //프래그먼트 구성
         rootView = (ViewGroup)inflater.inflate(R.layout.ranking_edit_fragment,container,false);
+        exView = (ViewGroup)inflater.inflate(R.layout.ranking_fragment,container,false);
 
         title=(TextView)rootView.findViewById(R.id.rank_edit_title);
         title.setText("유저 수정");
 
         Bundle bundle = getArguments();
+
         if(bundle != null){
-            name = bundle.getString("name");
-            img_id= bundle.getInt("img");
-            lp = bundle.getInt("lp");
+            item = (Ranking_Item) bundle.getSerializable("item");
+            adapter=(RankingDataAdapter) bundle.getSerializable("adapter");
         }
+
+
+
         editName=(EditText)rootView.findViewById(R.id.ranking_edit_name);
-        editName.setText(name);
-        //editImg=(ImageView)rootView.findViewById(R.id.ranking_add_img);
-        //editImg.setImageResource(img_id);
-        //editImg=rootView.findViewById(R.id.ranking_add_img);
-        /*
-        editImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent, 2);
-            }
-        });*/
         editLP=(EditText)rootView.findViewById(R.id.ranking_edit_lp);
-        editLP.setText(Integer.toString(lp));
+
+
 
         //완료버튼 클릭시
         AddCompleteButton=(Button)rootView.findViewById(R.id.ranking_edit_complete_btn);
@@ -78,11 +68,16 @@ public class Ranking_Edit_Fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //수정한 데이터를 데이터베이스에 저장
-
+                item.setrName((editName.getText().toString()));
+                item.setrLp(Integer.parseInt(editLP.getText().toString()));
+                adapter.update(item);
+                //Toast.makeText(rootView.getContext().getApplicationContext(),"글을 수정하였습니다.",Toast.LENGTH_LONG).show();
                 rankingFragment=new Ranking_Fragment();
                 Ranking_Activity.ranking_Fragment_Manager.beginTransaction().replace(R.id.container,rankingFragment).commit();
             }
         });
+
+
 
         //취소버튼 클릭시
         AddCancelButton=(Button)rootView.findViewById(R.id.ranking_edit_cancel_btn);
@@ -112,4 +107,3 @@ public class Ranking_Edit_Fragment extends Fragment {
         }
     }
 }
-

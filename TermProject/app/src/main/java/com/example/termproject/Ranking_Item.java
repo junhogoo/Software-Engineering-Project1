@@ -1,15 +1,17 @@
 package com.example.termproject;
 
-public class Ranking_Item  {
+import java.io.Serializable;
+
+public class Ranking_Item implements Serializable {
     int rNum,rLp;
     String rName;
-/*
-    public Ranking_Item(int rnum, int rlp, String rName) {
-        this.rNum = rnum;
-        this.rLp = rlp;
-        this.rName = rName;
-    }
-*/
+    /*
+        public Ranking_Item(int rnum, int rlp, String rName) {
+            this.rNum = rnum;
+            this.rLp = rlp;
+            this.rName = rName;
+        }
+    */
     public int getrNum() {
         return rNum;
     }
@@ -62,4 +64,3 @@ public class Ranking_Item  {
 
 
 }
-
