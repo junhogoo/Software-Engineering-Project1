@@ -95,7 +95,7 @@ public class Search_Activity extends AppCompatActivity {
                 community_btn.setSelected(false);
                 break;
             case 2:
-                intent = new Intent(this, Ranking_Activity.class);
+                intent = new Intent(this, ChampInfo_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("type", index);
                 startActivity(intent);

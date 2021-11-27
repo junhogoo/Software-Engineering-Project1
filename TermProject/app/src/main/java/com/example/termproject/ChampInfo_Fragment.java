@@ -26,7 +26,7 @@ public class ChampInfo_Fragment extends Fragment {
     ChampInfo_View_Adapter AdChampInfoAdapter;
     ChampInfo_View_Adapter SupportChampInfoAdapter;
     String selectLine="top";
-    ChampInfoDataAdapter adapter;
+    static ChampInfoDataAdapter adapter;
     ArrayList<ChampInfo_Item> champinfo_list;
 
 
@@ -59,7 +59,7 @@ public class ChampInfo_Fragment extends Fragment {
             public void onClick(View view) {
                 ChampInfo_Add_Fragment champInfoAddFragment =new ChampInfo_Add_Fragment();
                 Bundle bundle = new Bundle();
-                bundle.putString("line",selectLine);
+                //bundle.putSerializable("adapter",adapter);
                 champInfoAddFragment.setArguments(bundle);
                 ChampInfo_Activity.champInfo_Fragment_Manager.beginTransaction().replace(R.id.container,champInfoAddFragment).commit();
             }
@@ -112,10 +112,12 @@ public class ChampInfo_Fragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //선택된 리스트뷰에 해당하는 객체 생성
                 ChampInfo_Item selectedItem = (ChampInfo_Item) TopChampInfoAdapter.getItem(position);
-
                 //생성된 객체를 ChapmInfo_Detail_Fragment로 전달
-
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("item", selectedItem);
+                bundle.putSerializable("adapter",adapter);
                 ChampInfo_Detail_Fragment champDetailFragment =new ChampInfo_Detail_Fragment();
+                champDetailFragment.setArguments(bundle);
                 ChampInfo_Activity.champInfo_Fragment_Manager.beginTransaction().replace(R.id.container,champDetailFragment).commit();
             }
         });
@@ -176,7 +178,7 @@ public class ChampInfo_Fragment extends Fragment {
                 MidChampInfoAdapter.addItem(champinfo_list.get(i));
             else if(champinfo_list.get(i).getcLine().equals("원딜"))
                 AdChampInfoAdapter.addItem(champinfo_list.get(i));
-            else if(champinfo_list.get(i).getcLine().equals("서폿"))
+            else if(champinfo_list.get(i).getcLine().equals("서포터"))
                 SupportChampInfoAdapter.addItem(champinfo_list.get(i));
         }
         TopChampInfoListView.setAdapter(TopChampInfoAdapter);

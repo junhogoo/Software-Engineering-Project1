@@ -7,8 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.util.Log;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class ChampInfoDataAdapter implements Serializable {
@@ -119,23 +121,43 @@ public class ChampInfoDataAdapter implements Serializable {
             throw mSQLException;
         }
     }
-    public void insert(Community_Item item) {
+    public void insert(ChampInfo_Item item) {
         if(mDb != null) {
-            String sql = "insert into Community_info values(?, ?, ?, ?, ?, ?, ?)";
-            String[] params = {item.getIndex(), item.getNICKNAME(), item.getTitle(), item.getContents(), item.getLike(), item.getUnlike(), "."};
+            String sql;
+            //이미지받아오기
+            ByteArrayOutputStream stream1 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream1);
+            byte[] cImage = stream1.toByteArray();
+
+            ByteArrayOutputStream stream2 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream2);
+            byte[] cPassive = stream2.toByteArray();
+
+            ByteArrayOutputStream stream3 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream3);
+            byte[] cQskill = stream3.toByteArray();
+
+            ByteArrayOutputStream stream4 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream4);
+            byte[] cWskill = stream4.toByteArray();
+
+            ByteArrayOutputStream stream5 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream5);
+            byte[] cEskill = stream5.toByteArray();
+
+            ByteArrayOutputStream stream6 =new ByteArrayOutputStream();
+            item.getcImage().compress(Bitmap.CompressFormat.PNG,100,stream6);
+            byte[] cRskill = stream6.toByteArray();
+
+            sql = "insert into Champion_Info values(?, ?, ?, ?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            Object[] params = {item.getcName(),cImage,item.getcLine(),item.getcDspell(),item.getcFspell(),cPassive,cQskill,cWskill,cEskill,cRskill,item.getcSkillTree(),item.getcMainRune(),item.getcSubRune(),item.getcItem_1(),item.getcItem_2(),item.getcItem_3(),item.getcHardChampion(),item.getcEasyChampion(),item.getcWinRate(),item.getcPickRate()};
             mDb.execSQL(sql, params);
         }
     }
-    public void update(Community_Item item){
-        if(mDb != null) {
-            String sql = "update Community_info set Title=\""+item.getTitle()+"\", Contents=\""+item.getContents()+"\", \"Like\"="+item.getLike()+", \"UnLike\"="+item.getUnlike()+", Interaction=\""+item.getInteraction()+"\" where \"index\"="+item.getIndex();
-            mDb.execSQL(sql);
-        }
-    }
 
-    public void delete(Community_Item item){
+    public void delete(ChampInfo_Item item){
         if(mDb != null) {
-            String sql = "delete from Community_info where \"index\"="+item.getIndex();
+            String sql = "delete from Champion_Info where cName=\"" +item.getcName()+"\"";
             mDb.execSQL(sql);
         }
     }

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RankingDataAdapter implements Serializable {
-    protected static final String TAG = "CommunityDataAdapter";
+    protected static final String TAG = "RankingDataAdapter";
 
     // TODO : TABLE 이름을 명시해야함
     protected static final String TABLE_NAME = "Ranking_info";

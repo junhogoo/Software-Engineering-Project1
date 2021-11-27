@@ -3,7 +3,9 @@ package com.example.termproject;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-public class ChampInfo_Item {
+import java.io.Serializable;
+
+public class ChampInfo_Item implements Serializable {
     String cName;
     Bitmap cImage;
     String cLine;
