@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:background="#5383E8">
 
+
     <TextView
         android:id="@+id/lis_title"
         android:layout_width="150dp"

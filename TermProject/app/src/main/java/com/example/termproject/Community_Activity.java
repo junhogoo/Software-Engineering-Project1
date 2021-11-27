@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentManager;
 
 public class Community_Activity extends AppCompatActivity {
     Intent intent;
-    Login_item login_item;
     int index;
     Button home_btn;
     Button search_btn;
@@ -28,13 +27,11 @@ public class Community_Activity extends AppCompatActivity {
         setContentView(R.layout.community_activity);
 
         intent=getIntent();
-        login_item= (Login_item) intent.getSerializableExtra("login_item");
         index=intent.getIntExtra("type",0);
 
         community_Fragment_Manager=getSupportFragmentManager();
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("login_item", current_login);
         fragment=new Community_Fragment();
         fragment.setArguments(bundle);
         community_Fragment_Manager.beginTransaction().replace(R.id.container,fragment).commit();

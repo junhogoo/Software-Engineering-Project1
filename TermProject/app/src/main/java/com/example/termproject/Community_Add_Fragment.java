@@ -62,7 +62,7 @@ public class Community_Add_Fragment extends Fragment {
                 }
                 else {
                     Community_Fragment.communityCount++;
-                    item = new Community_Item(Integer.toString(Community_Fragment.communityCount),Home_Activity.login_item.getNICKNAME(),community_add_title.getText().toString(),community_add_content.getText().toString(),Integer.toString(0),Integer.toString(0),".");
+                    item = new Community_Item(Integer.toString(Community_Fragment.communityCount),Home_Activity.current_login.getNICKNAME(),community_add_title.getText().toString(),community_add_content.getText().toString(),Integer.toString(0),Integer.toString(0),".");
                     adapter.insert(item);
                     Toast.makeText(rootView.getContext().getApplicationContext(),"글을 등록하였습니다.",Toast.LENGTH_LONG).show();
                     community_add_fragment = new Community_Fragment();

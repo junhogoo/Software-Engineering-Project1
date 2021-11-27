@@ -72,7 +72,7 @@ public class Community_Detail_Fragment extends Fragment {
         String interaction = item.getInteraction();
         StringTokenizer token = new StringTokenizer(interaction, ".");
         while (token.hasMoreElements()) {
-            if(token.nextToken().equals(Home_Activity.login_item.getNICKNAME())) {
+            if(token.nextToken().equals(Home_Activity.current_login.getNICKNAME())) {
                 isInteraction = true;
                 break;
             }
@@ -96,7 +96,7 @@ public class Community_Detail_Fragment extends Fragment {
             public void onClick(View view) {
                 item.setLike(Integer.toString(Integer.parseInt(item.getLike())+1));
                 community_detail_like_num.setText(Integer.toString(Integer.parseInt(community_detail_like_num.getText().toString())+1));
-                item.setInteraction(item.getInteraction()+Home_Activity.login_item.getNICKNAME()+".");
+                item.setInteraction(item.getInteraction()+Home_Activity.current_login.getNICKNAME()+".");
                 adapter.update(item);
                 Toast.makeText(rootView.getContext().getApplicationContext(),"좋아요",Toast.LENGTH_LONG).show();
                 community_detail_good_btn.setEnabled(false);
@@ -108,7 +108,7 @@ public class Community_Detail_Fragment extends Fragment {
             public void onClick(View view) {
                 item.setUnlike(Integer.toString(Integer.parseInt(item.getUnlike())+1));
                 community_detail_unlike_num.setText(Integer.toString(Integer.parseInt(community_detail_unlike_num.getText().toString())+1));
-                item.setInteraction(item.getInteraction()+Home_Activity.login_item.getNICKNAME()+".");
+                item.setInteraction(item.getInteraction()+Home_Activity.current_login.getNICKNAME()+".");
                 adapter.update(item);
                 Toast.makeText(rootView.getContext().getApplicationContext(),"싫어요.",Toast.LENGTH_LONG).show();
                 community_detail_good_btn.setEnabled(false);
@@ -116,7 +116,7 @@ public class Community_Detail_Fragment extends Fragment {
             }
         });
 
-        if(!Home_Activity.login_item.getNICKNAME().equals(item.getNICKNAME())){
+        if(!Home_Activity.current_login.getNICKNAME().equals(item.getNICKNAME())&&Home_Activity.current_login.getPOWER()==1){
             communtiy_detail_edit_btn.setEnabled(false);
             communtiy_detail_delete_btn.setEnabled(false);
         }

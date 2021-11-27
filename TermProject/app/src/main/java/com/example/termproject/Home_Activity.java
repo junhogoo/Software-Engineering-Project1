@@ -15,6 +15,7 @@ public class Home_Activity extends AppCompatActivity {
     Button champInfo_btn;
     Button ranking_btn;
     Button community_btn;
+    Button logout_btn;
 
     FragmentManager manager;
     Fragment searchFragment;
@@ -77,6 +78,15 @@ public class Home_Activity extends AppCompatActivity {
                 intent.putExtra("id",current_login.ID);
                 intent.putExtra("type", 4);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
+        logout_btn = (Button) findViewById(R.id.logout_btn);
+        logout_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent.setClass(getApplicationContext(),MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });

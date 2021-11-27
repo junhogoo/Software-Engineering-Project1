@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -60,7 +61,7 @@ public class Ranking_Fragment extends Fragment {
                 dlg.setItems(select, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if(select[which]=="수정하기"){
+                        if(select[which]=="수정하기"&&Home_Activity.current_login.getPOWER()==2){
                             //기존에 등록되어있는 값을 수정창으로 이동
                             Ranking_Item item = (Ranking_Item) rankAdapter.getItem(position);
                             Ranking_Edit_Fragment rankingEditFragment =new Ranking_Edit_Fragment();
@@ -69,9 +70,9 @@ public class Ranking_Fragment extends Fragment {
                             bundle.putSerializable("adapter",adapter);
                             rankingEditFragment.setArguments(bundle);
                             Ranking_Activity.ranking_Fragment_Manager.beginTransaction().replace(R.id.container,rankingEditFragment).commit();
-
                         }
-                        else if(select[which]=="삭제하기"){
+
+                        else if(select[which]=="삭제하기"&&Home_Activity.current_login.getPOWER()==2){
                             //DB에서 지워저야함
                             rankAdapter.items.remove(position);
                             rankAdapter.notifyDataSetChanged();
