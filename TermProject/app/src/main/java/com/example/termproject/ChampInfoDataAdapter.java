@@ -95,16 +95,17 @@ public class ChampInfoDataAdapter implements Serializable {
                     item.setcQskill(mCur.getBlob(6));
                     item.setcWskill(mCur.getBlob(7));
                     item.setcEskill(mCur.getBlob(8));
-                    item.setcSkillTree(mCur.getString(9));
-                    item.setcMainRune(mCur.getString(10));
-                    item.setcSubRune(mCur.getString(11));
-                    item.setcItem_1(mCur.getString(12));
-                    item.setcItem_2(mCur.getString(13));
-                    item.setcItem_3(mCur.getString(14));
-                    item.setcHardChampion(mCur.getString(15));
-                    item.setcEasyChampion(mCur.getString(16));
-                    item.setcWinRate(mCur.getString(17));
-                    item.setcPickRate(mCur.getString(18));
+                    item.setcRskill(mCur.getBlob(9));
+                    item.setcSkillTree(mCur.getString(10));
+                    item.setcMainRune(mCur.getString(11));
+                    item.setcSubRune(mCur.getString(12));
+                    item.setcItem_1(mCur.getString(13));
+                    item.setcItem_2(mCur.getString(14));
+                    item.setcItem_3(mCur.getString(15));
+                    item.setcHardChampion(mCur.getString(16));
+                    item.setcEasyChampion(mCur.getString(17));
+                    item.setcWinRate(mCur.getString(18));
+                    item.setcPickRate(mCur.getString(19));
                     // 리스트에 넣기
                     userList.add(item);
                 }

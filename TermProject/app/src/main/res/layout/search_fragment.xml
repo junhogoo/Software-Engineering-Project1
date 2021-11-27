@@ -29,10 +29,10 @@
 
         <Button
             android:id="@+id/search_go_btn"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
             android:background="#ff0000"
             android:text="▶"
             android:textSize="50dp" />

@@ -1,5 +1,6 @@
 package com.example.termproject;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class Ranking_Activity extends AppCompatActivity {
+public class Search_Activity extends AppCompatActivity {
     Intent intent;
     String id;
     int index;
@@ -18,20 +19,20 @@ public class Ranking_Activity extends AppCompatActivity {
     Button champinfo_btn;
     Button ranking_btn;
     Button community_btn;
-    static FragmentManager ranking_Fragment_Manager;
+    static FragmentManager champInfo_Fragment_Manager;
     Fragment fragment;
 
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ranking_activity);
+        setContentView(R.layout.search_activity);
 
         intent=getIntent();
         id=intent.getStringExtra("id");
         index=intent.getIntExtra("type",0);
 
-        ranking_Fragment_Manager=getSupportFragmentManager();
-        fragment=new Ranking_Fragment();
-        ranking_Fragment_Manager.beginTransaction().replace(R.id.container,fragment).commit();
+        champInfo_Fragment_Manager=getSupportFragmentManager();
+        fragment=new Search_Fragment();
+        champInfo_Fragment_Manager.beginTransaction().replace(R.id.container,fragment).commit();
 
         home_btn=(Button)findViewById(R.id.home_btn);
         home_btn.setOnClickListener(new View.OnClickListener() {
@@ -88,19 +89,15 @@ public class Ranking_Activity extends AppCompatActivity {
     public void onActivityChange(int index){
         switch(index){
             case 1:
-                intent = new Intent(getApplicationContext(), Search_Activity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", index);
-                startActivity(intent);
                 search_btn.setSelected(true);
                 champinfo_btn.setSelected(false);
                 ranking_btn.setSelected(false);
                 community_btn.setSelected(false);
                 break;
             case 2:
-                intent = new Intent(getApplicationContext(), ChampInfo_Activity.class);
-                intent.putExtra("type", index);
+                intent = new Intent(this, Ranking_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
                 startActivity(intent);
                 search_btn.setSelected(false);
                 champinfo_btn.setSelected(true);
@@ -108,15 +105,18 @@ public class Ranking_Activity extends AppCompatActivity {
                 community_btn.setSelected(false);
                 break;
             case 3:
+                intent = new Intent(this, Ranking_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
+                startActivity(intent);
                 search_btn.setSelected(false);
                 champinfo_btn.setSelected(false);
                 ranking_btn.setSelected(true);
                 community_btn.setSelected(false);
                 break;
             case 4:
-                intent = new Intent(getApplicationContext(), Community_Activity.class);
+                intent = new Intent(this, Community_Activity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                intent.putExtra("type", index);
                 startActivity(intent);
                 search_btn.setSelected(false);
                 champinfo_btn.setSelected(false);

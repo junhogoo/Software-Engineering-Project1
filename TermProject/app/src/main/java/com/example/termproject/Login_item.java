@@ -1,20 +1,11 @@
 package com.example.termproject;
 
-import java.io.Serializable;
-
-public class Login_item implements Serializable {
+public class Login_item {
     String ID;
     String PWD;
     String NICKNAME;
     int POWER; // 1 : 유저  ,  2 : 관리자
 
-
-    public Login_item(String ID, String PWD, String NICKNAME, int POWER) {
-        this.ID = ID;
-        this.PWD = PWD;
-        this.NICKNAME = NICKNAME;
-        this.POWER = POWER;
-    }
 
     public String getID() {
         return ID;

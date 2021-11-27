@@ -130,8 +130,9 @@ public class ChampInfo_Item {
         return cRskill;
     }
 
-    public void setcRskill(Bitmap cRskill) {
-        this.cRskill = cRskill;
+    public void setcRskill(byte[] cRskill) {
+        Bitmap bitmap = BitmapFactory.decodeByteArray( cRskill, 0, cRskill.length ) ;
+        this.cRskill = bitmap;
     }
 
     public String getcSkillTree() {

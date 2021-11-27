@@ -87,16 +87,16 @@ public class ChampInfo_Activity extends AppCompatActivity {
 
     public void onActivityChange(int index){
         switch(index){
-//            case 1:
-//                intent = new Intent(this, Search_Activity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("type", index);
-//                startActivity(intent);
-//                search_btn.setSelected(true);
-//                champinfo_btn.setSelected(false);
-//                ranking_btn.setSelected(false);
-//                community_btn.setSelected(false);
-//                break;
+            case 1:
+                intent = new Intent(this, Search_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
+                startActivity(intent);
+                search_btn.setSelected(true);
+                champinfo_btn.setSelected(false);
+                ranking_btn.setSelected(false);
+                community_btn.setSelected(false);
+                break;
             case 2:
                 search_btn.setSelected(false);
                 champinfo_btn.setSelected(true);

@@ -34,7 +34,7 @@ public class Community_Activity extends AppCompatActivity {
         community_Fragment_Manager=getSupportFragmentManager();
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("login_item", login_item);
+        bundle.putSerializable("login_item", current_login);
         fragment=new Community_Fragment();
         fragment.setArguments(bundle);
         community_Fragment_Manager.beginTransaction().replace(R.id.container,fragment).commit();
@@ -93,36 +93,36 @@ public class Community_Activity extends AppCompatActivity {
 
     public void onActivityChange(int index){
         switch(index){
-//            case 1:
-//                intent = new Intent(this, Search_Activity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("type", index);
-//                startActivity(intent);
-//                search_btn.setSelected(true);
-//                champinfo_btn.setSelected(false);
-//                ranking_btn.setSelected(false);
-//                community_btn.setSelected(false);
-//                break;
-//            case 2:
-//                intent = new Intent(this, ChampInfo_Activity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("type", index);
-//                startActivity(intent);
-//                search_btn.setSelected(false);
-//                champinfo_btn.setSelected(true);
-//                ranking_btn.setSelected(false);
-//                community_btn.setSelected(false);
-//                break;
-//            case 3:
-//                intent = new Intent(this, Ranking_Activity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//                intent.putExtra("type", index);
-//                startActivity(intent);
-//                search_btn.setSelected(false);
-//                champinfo_btn.setSelected(false);
-//                ranking_btn.setSelected(true);
-//                community_btn.setSelected(false);
-//                break;
+            case 1:
+                intent = new Intent(this, Search_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
+                startActivity(intent);
+                search_btn.setSelected(true);
+                champinfo_btn.setSelected(false);
+                ranking_btn.setSelected(false);
+                community_btn.setSelected(false);
+                break;
+            case 2:
+                intent = new Intent(this, ChampInfo_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
+                startActivity(intent);
+                search_btn.setSelected(false);
+                champinfo_btn.setSelected(true);
+                ranking_btn.setSelected(false);
+                community_btn.setSelected(false);
+                break;
+            case 3:
+                intent = new Intent(this, Ranking_Activity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("type", index);
+                startActivity(intent);
+                search_btn.setSelected(false);
+                champinfo_btn.setSelected(false);
+                ranking_btn.setSelected(true);
+                community_btn.setSelected(false);
+                break;
             case 4:
                 search_btn.setSelected(false);
                 champinfo_btn.setSelected(false);
